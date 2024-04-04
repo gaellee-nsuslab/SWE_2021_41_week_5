@@ -1,0 +1,15 @@
+cd "./files"
+
+# Loop through each file in the directory.
+for FILE in *; do
+    # Skip directories.
+    if [ -d "$FILE" ]; then
+        continue
+    fi
+
+    # Extract the first letter of the filename, convert it to lowercase.
+    FOLDER=$(echo "$FILE" | cut -c 1 | tr '[:upper:]' '[:lower:]')
+
+    # Move the file into the corresponding folder.
+    mv "$FILE" "../$FOLDER/"
+done
